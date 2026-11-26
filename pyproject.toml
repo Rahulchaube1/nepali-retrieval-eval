@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nepali-retrieval-eval"
+version = "0.1.0"
+description = "An independent retrieval-evaluation scaffold with explicit data provenance gates"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.scripts]
+nepali-eval = "nepali_eval.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

@@ -1,0 +1,294 @@
+{
+  "schema_version": "1.0",
+  "tool": {
+    "name": "nepali-retrieval-eval",
+    "version": "0.1.0"
+  },
+  "mode": "smoke",
+  "status": "software_demo_only",
+  "interpretation": "Smoke metrics exercise software only. They make no Nepali or language-performance claim.",
+  "data": {
+    "document_count": 8,
+    "query_count": 12,
+    "semantic_group_count": 10,
+    "source_sha256": {
+      "docs.jsonl": "528aa39fef1855a26a4d6982f74ea30ddb22003d9f3573ff2088497396633863",
+      "queries.jsonl": "7965180fd35936698fe87c1c6d9fed493ec0eadf7108e5a25d908af32cc78c71"
+    },
+    "declared_reviewed_counts": {
+      "documents": 0,
+      "queries": 0
+    },
+    "review_verification": "Input declarations only; reviewer identity and work are not independently verified.",
+    "license_verification": "Input declarations only; maintainers must verify permissions and license compatibility."
+  },
+  "baseline": {
+    "name": "word_tfidf",
+    "version": "1",
+    "features": "Unicode letters/marks/numbers",
+    "normalization": "case-fold, Unicode NFC, collapse whitespace",
+    "tf": "1 + ln(count)",
+    "idf": "1 + ln((1 + document_count) / (1 + document_frequency))",
+    "idf_fit": "documents only; query relevance labels are never used",
+    "similarity": "cosine",
+    "tie_break": "document ID ascending",
+    "abstention": "no candidate with a strictly positive score"
+  },
+  "metrics": {
+    "counts": {
+      "queries": 12,
+      "answerable": 10,
+      "unanswerable": 2,
+      "accepted": 10,
+      "abstained": 2,
+      "answerable_top1_correct": 10,
+      "unanswerable_false_accepts": 0
+    },
+    "answerable_top1_accuracy": 1.0,
+    "answerable_recall_at_5": 1.0,
+    "answerable_mrr_at_10": 1.0,
+    "unanswerable_false_accept_rate": 0.0
+  },
+  "breakdown_by_variant": {
+    "control": {
+      "counts": {
+        "queries": 12,
+        "answerable": 10,
+        "unanswerable": 2,
+        "accepted": 10,
+        "abstained": 2,
+        "answerable_top1_correct": 10,
+        "unanswerable_false_accepts": 0
+      },
+      "answerable_top1_accuracy": 1.0,
+      "answerable_recall_at_5": 1.0,
+      "answerable_mrr_at_10": 1.0,
+      "unanswerable_false_accept_rate": 0.0
+    }
+  },
+  "breakdown_by_split": {
+    "dev": {
+      "counts": {
+        "queries": 6,
+        "answerable": 5,
+        "unanswerable": 1,
+        "accepted": 5,
+        "abstained": 1,
+        "answerable_top1_correct": 5,
+        "unanswerable_false_accepts": 0
+      },
+      "answerable_top1_accuracy": 1.0,
+      "answerable_recall_at_5": 1.0,
+      "answerable_mrr_at_10": 1.0,
+      "unanswerable_false_accept_rate": 0.0
+    },
+    "test": {
+      "counts": {
+        "queries": 6,
+        "answerable": 5,
+        "unanswerable": 1,
+        "accepted": 5,
+        "abstained": 1,
+        "answerable_top1_correct": 5,
+        "unanswerable_false_accepts": 0
+      },
+      "answerable_top1_accuracy": 1.0,
+      "answerable_recall_at_5": 1.0,
+      "answerable_mrr_at_10": 1.0,
+      "unanswerable_false_accept_rate": 0.0
+    }
+  },
+  "metric_definitions": {
+    "answerable_top1_accuracy": "Correct first results / all answerable queries; abstentions count as incorrect.",
+    "answerable_recall_at_5": "Macro average of relevant documents retrieved in top five / relevant documents for each answerable query.",
+    "answerable_mrr_at_10": "Macro reciprocal rank of first relevant result within ten; absent results score zero.",
+    "unanswerable_false_accept_rate": "Unanswerable queries with a positive-score result / all unanswerable queries.",
+    "missing_denominator": "A metric is null when its denominator is zero."
+  },
+  "rankings": [
+    {
+      "query_id": "smoke_q01",
+      "group_id": "g01",
+      "variant": "control",
+      "split": "dev",
+      "answerable": true,
+      "accepted_doc_id": "smoke_d01",
+      "candidates": [
+        {
+          "doc_id": "smoke_d01",
+          "score": 0.771265387411087
+        },
+        {
+          "doc_id": "smoke_d02",
+          "score": 0.31821275571732544
+        }
+      ]
+    },
+    {
+      "query_id": "smoke_q02",
+      "group_id": "g02",
+      "variant": "control",
+      "split": "dev",
+      "answerable": true,
+      "accepted_doc_id": "smoke_d02",
+      "candidates": [
+        {
+          "doc_id": "smoke_d02",
+          "score": 0.771265387411087
+        },
+        {
+          "doc_id": "smoke_d01",
+          "score": 0.31821275571732544
+        }
+      ]
+    },
+    {
+      "query_id": "smoke_q03",
+      "group_id": "g03",
+      "variant": "control",
+      "split": "test",
+      "answerable": true,
+      "accepted_doc_id": "smoke_d03",
+      "candidates": [
+        {
+          "doc_id": "smoke_d03",
+          "score": 0.771265387411087
+        },
+        {
+          "doc_id": "smoke_d04",
+          "score": 0.31821275571732544
+        }
+      ]
+    },
+    {
+      "query_id": "smoke_q04",
+      "group_id": "g04",
+      "variant": "control",
+      "split": "test",
+      "answerable": true,
+      "accepted_doc_id": "smoke_d04",
+      "candidates": [
+        {
+          "doc_id": "smoke_d04",
+          "score": 0.771265387411087
+        },
+        {
+          "doc_id": "smoke_d03",
+          "score": 0.31821275571732544
+        }
+      ]
+    },
+    {
+      "query_id": "smoke_q05",
+      "group_id": "g05",
+      "variant": "control",
+      "split": "dev",
+      "answerable": true,
+      "accepted_doc_id": "smoke_d05",
+      "candidates": [
+        {
+          "doc_id": "smoke_d05",
+          "score": 0.9623664370002806
+        }
+      ]
+    },
+    {
+      "query_id": "smoke_q06",
+      "group_id": "g06",
+      "variant": "control",
+      "split": "test",
+      "answerable": true,
+      "accepted_doc_id": "smoke_d06",
+      "candidates": [
+        {
+          "doc_id": "smoke_d06",
+          "score": 0.9623664370002806
+        }
+      ]
+    },
+    {
+      "query_id": "smoke_q07",
+      "group_id": "g07",
+      "variant": "control",
+      "split": "dev",
+      "answerable": true,
+      "accepted_doc_id": "smoke_d07",
+      "candidates": [
+        {
+          "doc_id": "smoke_d07",
+          "score": 0.9623664370002806
+        }
+      ]
+    },
+    {
+      "query_id": "smoke_q08",
+      "group_id": "g08",
+      "variant": "control",
+      "split": "test",
+      "answerable": true,
+      "accepted_doc_id": "smoke_d08",
+      "candidates": [
+        {
+          "doc_id": "smoke_d08",
+          "score": 0.9623664370002806
+        }
+      ]
+    },
+    {
+      "query_id": "smoke_q09",
+      "group_id": "g01",
+      "variant": "control",
+      "split": "dev",
+      "answerable": true,
+      "accepted_doc_id": "smoke_d01",
+      "candidates": [
+        {
+          "doc_id": "smoke_d01",
+          "score": 0.771265387411087
+        },
+        {
+          "doc_id": "smoke_d02",
+          "score": 0.31821275571732544
+        }
+      ]
+    },
+    {
+      "query_id": "smoke_q10",
+      "group_id": "g03",
+      "variant": "control",
+      "split": "test",
+      "answerable": true,
+      "accepted_doc_id": "smoke_d03",
+      "candidates": [
+        {
+          "doc_id": "smoke_d03",
+          "score": 0.771265387411087
+        },
+        {
+          "doc_id": "smoke_d04",
+          "score": 0.31821275571732544
+        }
+      ]
+    },
+    {
+      "query_id": "smoke_q11",
+      "group_id": "g09",
+      "variant": "control",
+      "split": "dev",
+      "answerable": false,
+      "accepted_doc_id": null,
+      "candidates": []
+    },
+    {
+      "query_id": "smoke_q12",
+      "group_id": "g10",
+      "variant": "control",
+      "split": "test",
+      "answerable": false,
+      "accepted_doc_id": null,
+      "candidates": []
+    }
+  ],
+  "elapsed_seconds": 0.000485739998111967,
+  "timing_scope": "Baseline indexing, retrieval and report construction; excludes file loading and validation."
+}
